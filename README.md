@@ -18,9 +18,11 @@ Request
 
 cat <text-file> | ./keywords_extract_en [--help] [--keywords-limit 20] [--html-entity-decode]
 
-    --keywords-limit        - Limit of keywords to extract. Sorted by frequency desc. Default is 20.
+    --keywords-limit        - Limit of keywords to extract. Sorted by frequency desc. 
+                              Default is 20.
 
-    --html-entity-decode    - Unescape html entities in input text. Default is off.
+    --html-entity-decode    - Unescape html entities in input text. 
+                              Default is off.
 
 Response
 
