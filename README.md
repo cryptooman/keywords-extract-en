@@ -30,29 +30,29 @@ cat <text-file> | ./keywords_extract_en [--help] [--keywords-limit 20] [--html-e
 
 Response
 
-{
-    "content_length"                : 90826,
-    "letters_count"                 : 61619,
-    "words_count"                   : 13525,
-    "keywords_count"                : 5670,
-    "keywords_uniq_count"           : 1081,
-    "keywords_frequency_ratio"      : 0.4192,
-    "keywords_uniqueness_ratio"     : 0.1907,
-    "keywords":
-    [
-        { "dictionary":227 },
-        { "word":174 },
-        { "file":158 },
-        { "user":136 },
-        { "base":94 },
-        { "mode":92 },
-        { "filename":67 },
-        { "dic":63 },
-        { "command":63 },
-        { "menu":60 },
-        ...
-    ]
-}
+    {
+        "content_length"                : 90826,
+        "letters_count"                 : 61619,
+        "words_count"                   : 13525,
+        "keywords_count"                : 5670,
+        "keywords_uniq_count"           : 1081,
+        "keywords_frequency_ratio"      : 0.4192,
+        "keywords_uniqueness_ratio"     : 0.1907,
+        "keywords":
+        [
+            { "dictionary":227 },
+            { "word":174 },
+            { "file":158 },
+            { "user":136 },
+            { "base":94 },
+            { "mode":92 },
+            { "filename":67 },
+            { "dic":63 },
+            { "command":63 },
+            { "menu":60 },
+            ...
+        ]
+    }
 
 #
 # Builds
