@@ -1,10 +1,14 @@
-Keywords extractor from text
+#
+# Keywords extractor from text
+#
 
 Language: english
 
 Analyzed words: 1 522 456 687
 
 Unique words: 5 787 992
+
+Total words in vocabulary: 41 276
 
 Upper threshold frequency: 0.04324 % (stop-words)
 
