@@ -2,7 +2,7 @@
 # Keywords extractor from text
 #
 
-Language: english
+Language support: english
 
 Analyzed words: 1 522 456 687
 
@@ -22,7 +22,8 @@ Request
 
 cat <text-file> | ./keywords_extract_en [--help] [--keywords-limit 20] [--html-entity-decode]
 
-    --keywords-limit        - Limit of keywords to extract. Sorted by frequency desc. 
+    --keywords-limit <int>  - Limit of keywords to extract. Sorted by frequency desc.
+                              "-1" to extract all keywords.
                               Default is 20.
 
     --html-entity-decode    - Unescape html entities in input text. 
@@ -31,13 +32,13 @@ cat <text-file> | ./keywords_extract_en [--help] [--keywords-limit 20] [--html-e
 Response
 
     {
-        "content_length"                : 90826,
-        "letters_count"                 : 61619,
-        "words_count"                   : 13525,
-        "keywords_count"                : 5670,
-        "keywords_uniq_count"           : 1081,
-        "keywords_frequency_ratio"      : 0.4192,
-        "keywords_uniqueness_ratio"     : 0.1907,
+        "content_length" : 90826,
+        "letters_count" : 61619,
+        "words_count" : 13525,
+        "keywords_count" : 5670,
+        "keywords_uniq_count" : 1081,
+        "keywords_frequency_ratio" : 0.4192,
+        "keywords_uniqueness_ratio" : 0.1907,
         "keywords":
         [
             { "dictionary":227 },

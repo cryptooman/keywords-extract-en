@@ -1,2 +1,9 @@
+ifeq ($(DEBUG), 1)
+    CFLAGS = 
+else
+    CFLAGS = -O1
+endif
+
 all:
-	g++ -v -std=c++11 -O1 keywords_extract_en.cpp -o keywords_extract_en -lboost_regex
+	@echo "Debug mode : $(DEBUG)"
+	g++ -v $(CFLAGS) -std=c++11 keywords_extract_en.cpp -o keywords_extract_en -lboost_regex

@@ -1,19 +1,25 @@
 /*
     Keywords extractor from text
-    Language: english
+    
+    Language support : english
 
-    Analyzed words: 1 522 456 687
-    Unique words: 5 787 992
-    Total words in vocabulary: 41 276
-    Upper threshold frequency: 0.04324 % (stop-words)
-    Lower threshold frequency: 0.00006 % (namings, rare words, trash, etc.)
+    Analyzed words : 1 522 456 687
+    Unique words : 5 787 992
+    Total words in vocabulary : 41 276
+    
+    Upper threshold frequency : 0.04324 % (stop-words)
+    Lower threshold frequency : 0.00006 % (namings, rare words, trash, etc.)
 
     Usage:
 
     Request
     cat <text-file> | ./keywords_extract_en [--help] [--keywords-limit 20] [--html-entity-decode]
-        --keywords-limit        - Limit of keywords to extract. Sorted by frequency desc. Default is 20.
-        --html-entity-decode    - Unescape html entities in input text. Default is off.
+        --keywords-limit <int>  - Limit of keywords to extract. Sorted by frequency desc.
+                                  "-1" to extract all keywords.
+                                  Default is 20.
+                                    
+        --html-entity-decode    - Unescape html entities in input text. 
+                                  Default is off.
 
     Response
     {
@@ -43,9 +49,11 @@
 
 #include <iostream>
 #include <string>
+#include <climits>
 #include <map>
 #include <unordered_map>
 #include <fstream>
+#include <algorithm>
 #include <boost/regex.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/join.hpp>
@@ -61,7 +69,7 @@ int main(int argc, char* argv[])
 {
     // Get args
 
-    string usage = "Usage: cat <text-file> | <bin> [--help] [--keywords-limit=<int>] [--html-entity-decode]";
+    string usage = "Usage: cat <text-file> | <bin> [--help] [--keywords-limit <int>] [--html-entity-decode]";
 
     if(argc < 1)
     {
@@ -95,7 +103,9 @@ int main(int argc, char* argv[])
         }
     }
 
-    if(keywords_limit <= 0)
+    if(keywords_limit == -1)
+        keywords_limit = INT_MAX;
+    else if(keywords_limit <= 0)
         keywords_limit = DEFAULT_KEYWORDS_LIMIT;
 
     // Help
@@ -133,6 +143,8 @@ int main(int argc, char* argv[])
 
     input_text = boost::regex_replace(input_text, boost::regex {"[^a-zA-Z]"}, std::string {" "});
     input_text = boost::regex_replace(input_text, boost::regex {"[ \r\n\t]+"}, std::string {" "});
+
+    transform(input_text.begin(), input_text.end(), input_text.begin(), ::tolower);
 
     // Split text to word tokens
 
